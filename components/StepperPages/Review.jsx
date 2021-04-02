@@ -1,7 +1,7 @@
 // Components
 import { Box, Heading, } from '@chakra-ui/react';
 
-const Step4 = () => {
+const Review = () => {
   return (
     <Box>
       <Heading>Step 4</Heading>
@@ -9,4 +9,4 @@ const Step4 = () => {
   )
 };
 
-export default Step4;
+export default Review;
