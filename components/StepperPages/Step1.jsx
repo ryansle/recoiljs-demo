@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 // Components
 import { 
   Box, 
@@ -9,7 +11,28 @@ import {
   FormHelperText,
 } from '@chakra-ui/react';
 
+// Utilities
+import { fields as fieldsState, current } from '../../utils/atoms';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+
 const Step1 = () => {
+  const [fields, setFields] = useRecoilState(fieldsState);
+  const setComplete = useSetRecoilState(current);
+
+  const updateFields = (e) => {
+    const { name, value } = e.target;
+    setFields((details) => ({
+      ...details,
+      [name]: value,
+    }));
+  };
+
+  useEffect(() => {
+    if (fields.email !== '' && fields.name !== '' && fields.phoneNumber !== '') {
+      setComplete(true);
+    };
+  }, [fields]);
+
   return (
     <Box px='5em'>
       <Heading mb={5}>Step 1</Heading>
@@ -17,13 +40,23 @@ const Step1 = () => {
         <Box width={['100%', '45%']}>
           <FormControl id='email' mb={5} isRequired>
             <FormLabel>Email Address</FormLabel>
-            <Input placeholder='Email Address' />
+            <Input 
+              name='email' 
+              placeholder='Email Address' 
+              value={fields.email}
+              onChange={updateFields} 
+            />
             <FormHelperText>We'll never share your email address.</FormHelperText>
           </FormControl>
 
           <FormControl id='name' mb={5} isRequired>
             <FormLabel>Name</FormLabel>
-            <Input placeholder='Name' />
+            <Input 
+              name='name' 
+              placeholder='Name'
+              value={fields.name}
+              onChange={updateFields}
+            />
             <FormHelperText>What should we call you?</FormHelperText>
           </FormControl>
 
@@ -31,7 +64,12 @@ const Step1 = () => {
         <Box width={['100%', '45%']}>
           <FormControl id='phoneNumber' isRequired>
             <FormLabel>Phone Number</FormLabel>
-            <Input placeholder='Email Address' />
+            <Input 
+              name='phoneNumber' 
+              placeholder='Phone Number' 
+              value={fields.phoneNumber}
+              onChange={updateFields}
+            />
             <FormHelperText>For us to send you reminders. You can opt out of this later.</FormHelperText>
           </FormControl>
         </Box>
