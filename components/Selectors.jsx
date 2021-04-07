@@ -13,6 +13,7 @@ import {
   Stat,
   StatLabel,
   StatNumber,
+  Code,
 } from '@chakra-ui/react';
 
 // Utilities
@@ -46,7 +47,29 @@ const Selectors = () => {
 
   return (
     <Box>
-      <Select value={filter} onChange={updateFilter} placeholder='Show All'>
+      <Text fontSize='xl' mb={5}>
+        Recoil also provides us a utility called a <b>selector</b> which just represents a piece of derived
+        state. This kind of derived state allows us to build dynamic data that depends on other data. For example,
+        let's say we have a table of information that we want to be able to filter accordingly.
+      </Text>
+      <Text fontSize='xl' mb={5}>
+        Granted, this example is entirely possible without Recoil. Recoil will just help to clean up the code a bit
+        and make it easier to read and sift through. Without Recoil, we could create a bunch of separate states and{' '}
+        <Code>useEffects</Code> to filter our data and store it all in separate containers as a user navigates our
+        application.
+      </Text>
+      <Text fontSize='xl' mb={5}>
+        Instead, Recoil will allow us to contain this data within one selector, that ties back to one atom, and can
+        dispatch an action to filter that original atom's data accordingly for use within our table. This will make
+        more sense once we walk through the code. For now, take a look:
+      </Text>
+
+      <Select 
+        value={filter} 
+        onChange={updateFilter} 
+        placeholder='Show All'
+        mb={5}
+      >
         <option value='Show Attending'>Show Attending</option>
         <option value='Show Not Attending'>Show Not Attending</option>
       </Select>
@@ -69,7 +92,7 @@ const Selectors = () => {
           ))}
         </Tbody>
       </Table>
-      <Flex justify='space-between' mt={5}>
+      <Flex justify='space-between' my={5}>
         <Stat>
           <StatLabel>Total Invitees</StatLabel>
           <StatNumber>{totalInvitees}</StatNumber>
@@ -91,6 +114,11 @@ const Selectors = () => {
           <StatNumber>{percentageNotAttending.toFixed(2) * 100}%</StatNumber>
         </Stat>
       </Flex>
+
+      <Text fontSize='xl' mb={5}>
+        We can also use Recoil's selector syntax to implement statistics regarding our pertinent data with ease,
+        as shown above.
+      </Text>
     </Box>
   );
 };
