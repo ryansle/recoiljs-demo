@@ -5,7 +5,6 @@ import StepperProgress from './StepperProgress';
 import StepperActions from './StepperActions';
 
 const Stepper = ({ steps = [], step, setStep, selected, children }) => {
-  // TODO: Lock down stepper navigation to previously visited, current, and immediate next step
   return (
     <Box>
       <Center mb={10}>

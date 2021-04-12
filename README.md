@@ -1,8 +1,28 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Recoil.js
+
+Recoil is an experimental state management library for React apps built directly by software engineers at Facebook. It provides several capabilities that are difficult to achieve with React alone, while being compatible with the newest features of React.
+
+## Features
+
+### Minimal and Reactish
+
+Recoil works and thinks like React. Add some to your app and get fast and flexible shared state.
+
+### Data-Flow Graph
+
+Derived data and asynchronous queries are tamed with pure functions and efficient subscriptions.
+
+### Cross-App Observation
+
+Implement persistence, routing, time-travel debugging, or undo by observing all state changes across your app, without impairing code-splitting.
+
 ## Getting Started
 
-First, run the development server:
+First, run an `npm install` to install all the necessary dependencies.
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -12,23 +32,15 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Purpose
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+I put together this boilerplate application to demonstrate some of Recoil's state management capabilities as a substitute for Redux. In my opinion, and without extensive knowledge of Redux, I believe Recoil to be a great alternative to having to create actions and reducers to access a global store as is the case with Redux. Writing Recoil feels exactly like writing React, and is just as intuitive through their hooks-based API.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Dependencies
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js
+- Chakra UI
+- Chakra UI Icons
+- Emotion
+- Framer Motion
+- Recoil.js
